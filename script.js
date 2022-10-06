@@ -204,7 +204,11 @@ voiceSelect.onchange = function () {
     synth.speak(utterThis);
 } */
 
+
+let nome_utente = prompt('Come ti chiami?');
+
 function listen() {
+
     var element = document.getElementById("activate");
     element.classList.add("active-voice");
     let inputArea = document.getElementById('input-area')
@@ -217,8 +221,8 @@ function listen() {
     recognition.onresult = function(event) {
         var transcript = event.results[0][0].transcript;
         if (transcript.includes("Ciao")) {
-          responseMessage("Ciao, utente!")
-            const utterThis =  new SpeechSynthesisUtterance("Ciao, Luca!");
+          responseMessage("Ciao, "+nome_utente+"!")
+            const utterThis =  new SpeechSynthesisUtterance("Ciao, "+nome_utente+"!");
             utterThis.pitch = "1";
             utterThis.rate = "1";
             const selectedOption = voiceSelect.selectedOptions[0].getAttribute("data-name");
